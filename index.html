@@ -239,6 +239,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>Pokédex</h1>
 
@@ -378,14 +379,11 @@
     }
 
     function formatGenderRate(rate) {
-  if (rate === -1) return "Genderless";
-  if (rate === 0) return `<i class="fas fa-mars" style="color:#3b4cca;"></i>`;
-  if (rate === 8) return `<i class="fas fa-venus" style="color:#ff5fa2;"></i>`;
-  return `
-    <i class="fas fa-mars" style="color:#3b4cca;"></i>
-    <i class="fas fa-venus" style="color:#ff5fa2; margin-left: 8px;"></i>
-  `;
-}
+      if (rate === -1) return "Genderless";
+      const female = (rate / 8) * 100;
+      const male = 100 - female;
+      return `${male}% ♂ / ${female}% ♀`;
+    }
 
     document.getElementById("closeModal").onclick = () => {
       modal.style.display = "none";
